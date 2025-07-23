@@ -7,6 +7,7 @@ clienteweb = new Paho.MQTT.Client("broker.hivemq.com",8884,clienteId)
 
 // Conectar ao MQTT
 clienteweb.connect({
+    timeout:8, // tenta conectar o dobro do tempo inserido aqui e caso não consiga, apresenta a informação de erro
     useSSL:true, // utilizando a conexão segura para poder hospedar o render
     onSuccess: function(){ // função para ao conectar ao broker informar que conectou com sucesso
         alert("Conectado ao broker com sucesso :)")
