@@ -3,8 +3,8 @@ let clienteweb =null
 
 const clienteId = "Esp32" + Math.floor(Math.random()*900) + 100
 // onfiguração para conectat ao broker MQTT o método Paho.MQTT.Cliente necessita do Host, número da Porta e o cliente ID
-//clienteweb = new Paho.MQTT.Client("broker.hivemq.com",8884,clienteId)
-clienteweb = new Paho.MQTT.Client("broker.emqx.io",8084,clienteId)
+clienteweb = new Paho.MQTT.Client("broker.hivemq.com",8884,clienteId)
+//clienteweb = new Paho.MQTT.Client("broker.emqx.io",8084,clienteId)
 
 // Conectar ao MQTT
 clienteweb.connect({
@@ -52,7 +52,9 @@ function ligarverde(){
 
 function automatico(){
 
-    alert("Automático!")
+  const msg = new Paho.MQTT.Message("AUT") // payload que será enviado ao tópico
+    msg.destinationName = "senai801/Led/Liga" // tópico
+    clienteweb.send(msg) // envia a informação para o tópico
 }
 
 function desligar(){
