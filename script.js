@@ -51,8 +51,11 @@ function ligarverde(){
 }
 
 function automatico(){
+    document.getElementById("vermelho").classList.add("vermelho")
+    document.getElementById("amarelo").classList.add("amarelo")
+    document.getElementById("verde").classList.add("verde")
 
-  const msg = new Paho.MQTT.Message("AUT") // payload que será enviado ao tópico
+    const msg = new Paho.MQTT.Message("AUT") // payload que será enviado ao tópico
     msg.destinationName = "senai801/Led/Liga" // tópico
     clienteweb.send(msg) // envia a informação para o tópico
 }
