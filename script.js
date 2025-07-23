@@ -3,7 +3,8 @@ let clienteweb =null
 
 const clienteId = "Esp32" + Math.floor(Math.random()*900) + 100
 // onfiguração para conectat ao broker MQTT o método Paho.MQTT.Cliente necessita do Host, número da Porta e o cliente ID
-clienteweb = new Paho.MQTT.Client("broker.hivemq.com",8884,clienteId)
+//clienteweb = new Paho.MQTT.Client("broker.hivemq.com",8884,clienteId)
+clienteweb = new Paho.MQTT.Client("broker.emqx.io",8084,clienteId)
 
 // Conectar ao MQTT
 clienteweb.connect({
@@ -22,8 +23,8 @@ function ligarvermelho(){
     document.getElementById("amarelo").classList.remove("amarelo")
     document.getElementById("verde").classList.remove("verde")
 
-    const msg = new Paho.MQTT.Message("") // payload que será enviado ao tópico
-    msg.destinationName = "V1" // tópico
+    const msg = new Paho.MQTT.Message("V1") // payload que será enviado ao tópico
+    msg.destinationName = "senai801/Led/Liga" // tópico
     clienteweb.send(msg) // envia a informação para o tópico
 }
 
@@ -33,8 +34,8 @@ function ligaramarelo(){
     document.getElementById("vermelho").classList.remove("vermelho")
     document.getElementById("verde").classList.remove("verde")
 
-    const msg = new Paho.MQTT.Message("") // payload que será enviado ao tópico
-    msg.destinationName = "A1" // tópico
+    const msg = new Paho.MQTT.Message("A1") // payload que será enviado ao tópico
+    msg.destinationName = "senai801/Led/Liga" // tópico
     clienteweb.send(msg) // envia a informação para o tópico
 }
 
@@ -44,8 +45,8 @@ function ligarverde(){
    document.getElementById("vermelho").classList.remove("vermelho")
    document.getElementById("amarelo").classList.remove("amarelo")
 
-   const msg = new Paho.MQTT.Message("") // payload que será enviado ao tópico
-    msg.destinationName = "Vd1" // tópico
+   const msg = new Paho.MQTT.Message("Vd1") // payload que será enviado ao tópico
+    msg.destinationName = "senai801/Led/Liga" // tópico
     clienteweb.send(msg) // envia a informação para o tópico
 }
 
@@ -59,4 +60,8 @@ function desligar(){
    document.getElementById("vermelho").classList.remove("vermelho")
    document.getElementById("amarelo").classList.remove("amarelo")
    document.getElementById("verde").classList.remove("verde")
+
+   const msg = new Paho.MQTT.Message("") // payload que será enviado ao tópico
+    msg.destinationName = "DEL" // tópico
+    clienteweb.send(msg) // envia a informação para o tópico
 }
