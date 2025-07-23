@@ -23,7 +23,7 @@ function ligarvermelho(){
     document.getElementById("verde").classList.remove("verde")
 
     const msg = new Paho.MQTT.Message("") // payload que será enviado ao tópico
-    msg.destinationName = "senai801/Led/Liga" // tópico
+    msg.destinationName = "V1" // tópico
     clienteweb.send(msg) // envia a informação para o tópico
 }
 
@@ -34,7 +34,7 @@ function ligaramarelo(){
     document.getElementById("verde").classList.remove("verde")
 
     const msg = new Paho.MQTT.Message("") // payload que será enviado ao tópico
-    msg.destinationName = "senai801/Led/Desliga" // tópico
+    msg.destinationName = "A1" // tópico
     clienteweb.send(msg) // envia a informação para o tópico
 }
 
@@ -43,6 +43,10 @@ function ligarverde(){
    document.getElementById("verde").classList.add("verde")
    document.getElementById("vermelho").classList.remove("vermelho")
    document.getElementById("amarelo").classList.remove("amarelo")
+
+   const msg = new Paho.MQTT.Message("") // payload que será enviado ao tópico
+    msg.destinationName = "Vd1" // tópico
+    clienteweb.send(msg) // envia a informação para o tópico
 }
 
 function automatico(){
