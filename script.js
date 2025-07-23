@@ -61,7 +61,7 @@ function desligar(){
    document.getElementById("amarelo").classList.remove("amarelo")
    document.getElementById("verde").classList.remove("verde")
 
-   const msg = new Paho.MQTT.Message("") // payload que será enviado ao tópico
-    msg.destinationName = "DEL" // tópico
+   const msg = new Paho.MQTT.Message("DEL") // payload que será enviado ao tópico
+    msg.destinationName = "senai801/Led/Liga" // tópico
     clienteweb.send(msg) // envia a informação para o tópico
 }
